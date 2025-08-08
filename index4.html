@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condomínio Carla Cristina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Login modal */
+        .modal-enter {
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        .admin-panel {
+            background-color: #f8fafc;
+            border-left: 1px solid #e2e8f0;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        #previewImage {
+            max-height: 200px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Main Page -->
+    <div id="mainPage" class="min-h-screen">
+        <!-- Header -->
+        <header class="bg-blue-700 text-white shadow-lg">
+            <div class="container mx-auto px-4 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <i class="fas fa-building text-3xl mr-3"></i>
+                        <h1 class="text-2xl md:text-3xl font-bold">Condomínio Carla Cristina</h1>
+                    </div>
+                    <nav class="flex space-x-1 md:space-x-4">
+                        <button onclick="showMainPage()" class="px-3 py-2 rounded-lg bg-blue-800 font-medium">Início</button>
+                        <button onclick="showAdminPage()" class="px-3 py-2 rounded-lg hover:bg-blue-600 font-medium">Administração</button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Bem-vindo ao nosso condomínio</h2>
+                <p class="text-xl md:text-2xl mb-6">Compartilhando momentos e informações importantes</p>
+                <div class="flex justify-center space-x-4">
+                    <button class="bg-white text-blue-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">Eventos</button>
+                    <button class="border-2 border-white px-6 py-2 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition">Regulamento</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Announcements Section -->
+        <section class="py-12 container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-800">Avisos e Comunicações</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Announcement cards will be loaded here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Photo Gallery -->
+        <section class="py-12 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-800">Galeria de Fotos</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Photo items will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Google Form Section -->
+        <section class="py-12 container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-800">Formulário Coletivo</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScEXAMPLE/viewform?embedded=true" 
+                        width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-8">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="text-xl font-bold mb-2">Condomínio Carla Cristina</h3>
+                        <p class="text-gray-300">Rua Exemplo, 123 - Bairro - Cidade</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook text-2xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-whatsapp text-2xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fas fa-envelope text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="mt-6 text-center text-gray-400 text-sm">
+                    <p>© 2023 Condomínio Carla Cristina. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Admin Page (initially hidden) -->
+    <div id="adminPage" class="min-h-screen hidden">
+        <!-- Admin Header -->
+        <header class="bg-gray-800 text-white shadow-lg">
+            <div class="container mx-auto px-4 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <i class="fas fa-user-shield text-3xl mr-3"></i>
+                        <h1 class="text-2xl md:text-3xl font-bold">Área Administrativa</h1>
+                    </div>
+                    <nav class="flex space-x-1 md:space-x-4">
+                        <button onclick="showMainPage()" class="px-3 py-2 rounded-lg hover:bg-gray-700 font-medium">Voltar ao Site</button>
+                        <button onclick="logout()" class="px-3 py-2 rounded-lg bg-red-600 hover:bg-red-700 font-medium">Sair</button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Admin Content -->
+        <div class="flex flex-col md:flex-row min-h-screen">
+            <!-- Sidebar -->
+            <aside class="bg-gray-700 text-white w-full md:w-64 p-4">
+                <div class="mb-8">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas fa-user-circle text-4xl"></i>
+                        <div>
+                            <p class="font-bold">Administrador</p>
+                            <p class="text-sm text-gray-300">condominio@carlacristina.com</p>
+                        </div>
+                    </div>
+                </div>
+                <nav>
+                    <ul class="space-y-2">
+                        <li>
+                            <button onclick="showTab('posts')" class="w-full text-left px-4 py-2 rounded-lg bg-gray-600 hover:bg-gray-500 flex items-center">
+                                <i class="fas fa-newspaper mr-2"></i> Gerenciar Postagens
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="showTab('photos')" class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-500 flex items-center">
+                                <i class="fas fa-images mr-2"></i> Gerenciar Fotos
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="showTab('settings')" class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-500 flex items-center">
+                                <i class="fas fa-cog mr-2"></i> Configurações
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Admin Content -->
+            <main class="flex-1 p-6 admin-panel">
+                <!-- Posts Tab -->
+                <div id="posts" class="tab-content active">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Gerenciar Postagens</h2>
+                    
+                    <!-- Add New Post Form -->
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                        <h3 class="text-xl font-semibold mb-4">Nova Postagem</h3>
+                        <form id="postForm" class="space-y-4">
+                            <div>
+                                <label for="postTitle" class="block text-sm font-medium text-gray-700 mb-1">Título</label>
+                                <input type="text" id="postTitle" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="postContent" class="block text-sm font-medium text-gray-700 mb-1">Conteúdo</label>
+                                <textarea id="postContent" rows="5" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Publicar</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Existing Posts -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Postagens Existentes</h3>
+                        <div id="existingPosts" class="space-y-4">
+                            <!-- Posts will be loaded here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photos Tab -->
+                <div id="photos" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Gerenciar Fotos</h2>
+                    
+                    <!-- Add New Photo Form -->
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                        <h3 class="text-xl font-semibold mb-4">Adicionar Nova Foto</h3>
+                        <form id="photoForm" class="space-y-4">
+                            <div>
+                                <label for="photoTitle" class="block text-sm font-medium text-gray-700 mb-1">Título (opcional)</label>
+                                <input type="text" id="photoTitle" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="photoUpload" class="block text-sm font-medium text-gray-700 mb-1">Selecionar Imagem</label>
+                                <input type="file" id="photoUpload" accept="image/*" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Pré-visualização</label>
+                                    <img id="previewImage" src="" alt="Pré-visualização" class="border rounded-lg hidden">
+                                </div>
+                                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition h-fit">Enviar Foto</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Existing Photos -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Fotos Existentes</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="existingPhotos">
+                            <!-- Photos will be loaded here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div id="settings" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Configurações</h2>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md space-y-6">
+                        <!-- Google Form Settings -->
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Formulário Google</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="googleFormUrl" class="block text-sm font-medium text-gray-700 mb-1">URL do Formulário</label>
+                                    <input type="url" id="googleFormUrl" value="https://docs.google.com/forms/d/e/1FAIpQLScEXAMPLE/viewform?embedded=true" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div class="flex justify-end">
+                                    <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Salvar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Admin Password -->
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Alterar Senha</h3>
+                            <form class="space-y-4">
+                                <div>
+                                    <label for="currentPassword" class="block text-sm font-medium text-gray-700 mb-1">Senha Atual</label>
+                                    <input type="password" id="currentPassword" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label for="newPassword" class="block text-sm font-medium text-gray-700 mb-1">Nova Senha</label>
+                                    <input type="password" id="newPassword" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirmar Nova Senha</label>
+                                    <input type="password" id="confirmPassword" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div class="flex justify-end">
+                                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Alterar Senha</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Photo Modal -->
+    <div id="photoModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center">
+        <div class="relative max-w-4xl w-full p-4">
+            <button onclick="closePhotoModal()" class="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="modalPhoto" src="" alt="" class="max-h-[90vh] mx-auto">
+            <p id="modalPhotoTitle" class="text-white text-center mt-4 text-lg"></p>
+        </div>
+    </div>
+
+    <script>
+        // Data storage using localStorage
+        let announcements = JSON.parse(localStorage.getItem('condominio_announcements')) || [];
+        let photos = JSON.parse(localStorage.getItem('condominio_photos')) || [];
+
+        // Initialize with sample data if empty
+        if (announcements.length === 0) {
+            announcements = [
+                { id: 1, title: "Manutenção da Piscina", content: "A piscina estará em manutenção nos dias 15 e 16 deste mês. Solicitamos que todos os moradores evitem utilizar o espaço durante este período.", date: "10/11/2023" },
+                { id: 2, title: "Assembleia Geral", content: "Convocamos todos os moradores para a Assembleia Geral que ocorrerá no dia 20/11 às 19h no salão de festas. Pauta: reforma da área de lazer.", date: "05/11/2023" }
+            ];
+            localStorage.setItem('condominio_announcements', JSON.stringify(announcements));
+        }
+
+        if (photos.length === 0) {
+            photos = [
+                { id: 1, title: "Festa Junina 2023", url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" },
+                { id: 2, title: "Reforma do Jardim", url: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" },
+                { id: 3, title: "Área de Lazer", url: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80" },
+                { id: 4, title: "Churrasco de Confraternização", url: "https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1136&q=80" }
+            ];
+            localStorage.setItem('condominio_photos', JSON.stringify(photos));
+        }
+
+        // Page navigation functions
+        function showMainPage() {
+            document.getElementById('mainPage').classList.remove('hidden');
+            document.getElementById('adminPage').classList.add('hidden');
+            loadMainPageContent();
+        }
+
+        // Admin password (in a real app, this would be server-side)
+        const ADMIN_PASSWORD = "123a";
+        let isAuthenticated = false;
+
+        function showAdminPage() {
+            if (!isAuthenticated) {
+                showLoginModal();
+            } else {
+                document.getElementById('mainPage').classList.add('hidden');
+                document.getElementById('adminPage').classList.remove('hidden');
+                loadAdminContent();
+            }
+        }
+
+        function showLoginModal() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg p-6 w-full max-w-md">
+                    <h3 class="text-xl font-bold mb-4">Acesso Administrativo</h3>
+                    <form id="loginForm" class="space-y-4">
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+                            <input type="password" id="password" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                        <div class="flex justify-end space-x-3">
+                            <button type="button" onclick="document.body.removeChild(this.parentElement.parentElement.parentElement)" class="px-4 py-2 border rounded-lg hover:bg-gray-100">Cancelar</button>
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Entrar</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const password = document.getElementById('password').value;
+                if (password === ADMIN_PASSWORD) {
+                    isAuthenticated = true;
+                    document.body.removeChild(modal);
+                    showAdminPage();
+                } else {
+                    alert('Senha incorreta. Tente novamente.');
+                }
+            });
+        }
+
+        function logout() {
+            isAuthenticated = false;
+            alert('Você foi desconectado da área administrativa.');
+            showMainPage();
+        }
+
+        // Tab navigation for admin
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show the selected tab
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Load main page content
+        function loadMainPageContent() {
+            // Load announcements
+            const announcementsContainer = document.querySelector('#mainPage .grid');
+            announcementsContainer.innerHTML = '';
+            
+            announcements.forEach(announcement => {
+                const announcementCard = document.createElement('div');
+                announcementCard.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition';
+                announcementCard.innerHTML = `
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">${announcement.title}</h3>
+                            <span class="text-sm text-gray-500">${announcement.date}</span>
+                        </div>
+                        <p class="text-gray-600">${announcement.content}</p>
+                    </div>
+                `;
+                announcementsContainer.appendChild(announcementCard);
+            });
+
+            // Load photos
+            const photosContainer = document.querySelector('#mainPage .grid.gap-4');
+            photosContainer.innerHTML = '';
+            
+            photos.forEach(photo => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'gallery-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer';
+                photoItem.innerHTML = `
+                    <div class="relative pb-[75%] overflow-hidden" onclick="openPhotoModal('${photo.url}', '${photo.title || ''}')">
+                        <img src="${photo.url}" alt="${photo.title || 'Foto do condomínio'}" class="absolute h-full w-full object-cover">
+                    </div>
+                    ${photo.title ? `<div class="p-3 bg-white">
+                        <p class="text-sm font-medium text-gray-800 truncate">${photo.title}</p>
+                    </div>` : ''}
+                `;
+                photosContainer.appendChild(photoItem);
+            });
+        }
+
+        // Load admin content
+        function loadAdminContent() {
+            // Load existing posts
+            const postsContainer = document.getElementById('existingPosts');
+            postsContainer.innerHTML = '';
+            
+            announcements.forEach(post => {
+                const postItem = document.createElement('div');
+                postItem.className = 'bg-gray-50 p-4 rounded-lg border border-gray-200';
+                postItem.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-bold text-gray-800">${post.title}</h4>
+                        <div class="flex space-x-2">
+                            <button onclick="editPost(${post.id})" class="text-blue-600 hover:text-blue-800">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button onclick="deletePost(${post.id})" class="text-red-600 hover:text-red-800">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">${post.content}</p>
+                    <p class="text-gray-400 text-xs">Postado em: ${post.date}</p>
+                `;
+                postsContainer.appendChild(postItem);
+            });
+
+            // Load existing photos
+            const photosContainer = document.getElementById('existingPhotos');
+            photosContainer.innerHTML = '';
+            
+            photos.forEach(photo => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'relative group';
+                photoItem.innerHTML = `
+                    <div class="relative pb-[100%] overflow-hidden rounded-lg cursor-pointer" onclick="openPhotoModal('${photo.url}', '${photo.title || ''}')">
+                        <img src="${photo.url}" alt="${photo.title || ''}" class="absolute h-full w-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <button onclick="deletePhoto(${photo.id})" class="bg-red-600 text-white p-2 rounded-full hover:bg-red-700">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    ${photo.title ? `<p class="mt-2 text-sm text-gray-700 truncate">${photo.title}</p>` : ''}
+                `;
+                photosContainer.appendChild(photoItem);
+            });
+        }
+
+        // Form handlers
+        document.getElementById('postForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
+            
+            if (!title || !content) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Add new post (in a real app, this would be sent to a server)
+            const newPost = {
+                id: announcements.length + 1,
+                title: title,
+                content: content,
+                date: new Date().toLocaleDateString('pt-BR')
+            };
+            
+            announcements.unshift(newPost);
+            localStorage.setItem('condominio_announcements', JSON.stringify(announcements));
+            loadAdminContent();
+            
+            // Reset form
+            this.reset();
+            alert('Postagem criada com sucesso!');
+        });
+
+        document.getElementById('photoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('photoTitle').value;
+            const fileInput = document.getElementById('photoUpload');
+            
+            if (!fileInput.files || fileInput.files.length === 0) {
+                alert('Por favor, selecione uma imagem.');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const newPhoto = {
+                    id: photos.length + 1,
+                    title: title,
+                    url: e.target.result // This is the base64 encoded image
+                };
+                
+                photos.unshift(newPhoto);
+                localStorage.setItem('condominio_photos', JSON.stringify(photos));
+                loadAdminContent();
+                
+                // Reset form
+                document.getElementById('photoForm').reset();
+                document.getElementById('previewImage').classList.add('hidden');
+                alert('Foto adicionada com sucesso!');
+            };
+            
+            reader.readAsDataURL(file);
+            return; // Prevent further execution
+            
+            photos.unshift(newPhoto);
+            localStorage.setItem('condominio_photos', JSON.stringify(photos));
+            loadAdminContent();
+            
+            // Reset form
+            this.reset();
+            document.getElementById('previewImage').classList.add('hidden');
+            alert('Foto adicionada com sucesso!');
+        });
+
+        // Photo modal functions
+        function openPhotoModal(photoUrl, photoTitle = '') {
+            document.getElementById('modalPhoto').src = photoUrl;
+            document.getElementById('modalPhotoTitle').textContent = photoTitle;
+            document.getElementById('photoModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePhotoModal() {
+            document.getElementById('photoModal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Photo preview
+        document.getElementById('photoUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const preview = document.getElementById('previewImage');
+                preview.src = URL.createObjectURL(file);
+                preview.classList.remove('hidden');
+            }
+        });
+
+        // Admin functions
+        function editPost(id) {
+            const post = announcements.find(p => p.id === id);
+            if (post) {
+                document.getElementById('postTitle').value = post.title;
+                document.getElementById('postContent').value = post.content;
+                
+                // Scroll to form
+                document.getElementById('postTitle').scrollIntoView({ behavior: 'smooth' });
+                
+                // In a real app, you would have proper edit functionality
+                alert(`Edição do post "${post.title}". Em uma aplicação real, isso permitiria salvar as alterações.`);
+            }
+        }
+
+        function deletePost(id) {
+            if (confirm('Tem certeza que deseja excluir esta postagem?')) {
+                announcements = announcements.filter(p => p.id !== id);
+                localStorage.setItem('condominio_announcements', JSON.stringify(announcements));
+                loadAdminContent();
+                alert('Postagem excluída com sucesso!');
+            }
+        }
+
+        function deletePhoto(id) {
+            if (confirm('Tem certeza que deseja excluir esta foto?')) {
+                photos = photos.filter(p => p.id !== id);
+                localStorage.setItem('condominio_photos', JSON.stringify(photos));
+                loadAdminContent();
+                alert('Foto excluída com sucesso!');
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMainPageContent();
+        });
+    </script>
+</body>
+</html>
