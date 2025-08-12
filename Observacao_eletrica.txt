@@ -1,0 +1,38 @@
+
+OBSERVIÇÕES:
+1-OS CONDUTORES E ELETRODUTOS NÃO INDICADOS
+REPECTIVAMENTE DE Nº 14   AWG É Ø 1/2"
+2-OS CONDUTORES DE BITOLA ACIMA DE Nº 6 AWG INCLUSIVE.
+SÃO ESPIRALADOS 
+3-OS CONDUTORES "TERRA" SÃO TODOS DE COBRE NU, LADOS
+4-ATERRAR OS REV ROS, TOR E RAS ELETRICAS E A MOS DE
+ AR CODICIONADO, AO NEUTRO DO CIRCUITO, QUANDO HOUVER
+ CONDUTOR DE TERRA ESPECIFICO.
+5-VER FOLHAS DE DETALHES E DE ESPECIFICAÇÃO DE MATERIAIS
+6-CONFERIR MEDIDAS NA OBRA.
+
+===============
+
+OBSERVAÇÕES GERAIS DA INSTALAÇÃO ELÉTRICA:
+
+1) Condutores e Eletrodutos não especificados:
+Quando não houver indicação específica, os condutores deverão ser de bitola Nº 14 AWG e os eletrodutos de Ø 1/2" (meia polegada).
+
+2) Condutores de Bitola Elevada:
+Os condutores com bitola acima de Nº 6 AWG (inclusive) deverão ser do tipo espiralado (ou cabo flexível, dependendo do contexto técnico mais preciso).
+
+3) Condutores de Aterramento:
+Todos os condutores de aterramento (terra) deverão ser de cobre nu, devidamente isolados (ou "laterais", se houver um contexto específico de layout, mas "isolados" é mais comum para segurança).
+
+4) Aterramento de Equipamentos:
+Aterrar os receptáculos (tomadas), motores (TOR - térmico, relé de sobrecarga) e redes elétricas, bem como as máquinas de ar condicionado, ao neutro do circuito, quando não houver um condutor de aterramento específico.
+
+5) VER FOLHAS DE DETALHES E DE ESPECIFICAÇÃO DE MATERIAIS
+
+6) CONFERIR MEDIDAS NA OBRA.
+
+Documentação Adicional:
+Para mais detalhes e especificações de materiais, consultar as folhas de detalhes e de especificação de materiais do projeto.
+
+Verificação em Obra:
+É mandatório conferir todas as medidas e especificações diretamente na obra antes de qualquer instalação ou compra de material.
