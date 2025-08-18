@@ -52,6 +52,7 @@
                     </div>
                     <nav class="flex space-x-1 md:space-x-4">
                         <button onclick="showMainPage()" class="px-3 py-2 rounded-lg bg-blue-800 font-medium">Início</button>
+                        <button onclick="showDocumentsPageWithAuth()" class="px-3 py-2 rounded-lg hover:bg-blue-600 font-medium">Documentos</button>
                         <button onclick="showAdminPage()" class="px-3 py-2 rounded-lg hover:bg-blue-600 font-medium">Administração</button>
                     </nav>
                 </div>
@@ -64,8 +65,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Bem-vindo ao nosso condomínio</h2>
                 <p class="text-xl md:text-2xl mb-6">Compartilhando momentos e informações importantes</p>
                 <div class="flex justify-center space-x-4">
-                    <button class="bg-white text-blue-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">Eventos</button>
-                    <button class="border-2 border-white px-6 py-2 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition">Regulamento</button>
+                    <a href="https://www.example.com/regulamento.pdf" target="_blank" class="border-2 border-white px-6 py-2 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition">Regulamento</a>
                 </div>
             </div>
         </section>
@@ -103,19 +103,83 @@
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="mb-4 md:mb-0">
                         <h3 class="text-xl font-bold mb-2">Condomínio Carla Cristina</h3>
-                        <p class="text-gray-300">Rua Exemplo, 123 - Bairro - Cidade</p>
+                        <p class="text-gray-300">Rua Cel. Quirino, 380 - Cambuí - Campinas - SP</p>
                     </div>
+
+                    <!-- REDES SOCIAIS -->
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook text-2xl"></i></a>
+                        <!--a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook text-2xl"></i></a -->
                         <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-whatsapp text-2xl"></i></a>
                         <a href="#" class="text-gray-300 hover:text-white"><i class="fas fa-envelope text-2xl"></i></a>
                     </div>
                 </div>
                 <div class="mt-6 text-center text-gray-400 text-sm">
-                    <p>© 2023 Condomínio Carla Cristina. Todos os direitos reservados.</p>
+                    <p><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR">   <img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> </a></p>
                 </div>
             </div>
         </footer>
+    </div>
+
+    <!-- Documents Page (initially hidden) -->
+    <div id="documentsPage" class="min-h-screen hidden">
+        <header class="bg-blue-700 text-white shadow-lg">
+            <div class="container mx-auto px-4 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <i class="fas fa-file-alt text-3xl mr-3"></i>
+                        <h1 class="text-2xl md:text-3xl font-bold">Documentos Restritos</h1>
+                        <p class="text-sm text-blue-200 ml-3">(Acesso autorizado)</p>
+                    </div>
+                    <nav class="flex space-x-1 md:space-x-4">
+                        <button onclick="showMainPage()" class="px-3 py-2 rounded-lg hover:bg-blue-600 font-medium">Voltar ao Site</button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4 py-12">
+            <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-8 rounded">
+                <div class="flex items-center">
+                    <i class="fas fa-lock mr-3"></i>
+                    <p>Estes documentos contêm informações confidenciais do condomínio. Por favor, não compartilhe com pessoas não autorizadas.</p>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Document cards will be added here -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-bold text-gray-800">Regulamento Interno</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Documento com as normas e regras do condomínio.</p>
+                        <a href="https://www.example.com/regulamento.pdf" target="_blank" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Baixar PDF</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-file-word text-blue-500 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-bold text-gray-800">Ata de Reunião</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Última ata de reunião do condomínio.</p>
+                        <a href="https://www.example.com/ata.docx" target="_blank" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Baixar DOCX</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-file-excel text-green-500 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-bold text-gray-800">Planilha de Gastos</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Planilha com os gastos mensais do condomínio.</p>
+                        <a href="https://www.example.com/gastos.xlsx" target="_blank" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Baixar XLSX</a>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
     <!-- Admin Page (initially hidden) -->
@@ -162,6 +226,11 @@
                             </button>
                         </li>
                         <li>
+                            <button onclick="showTab('documents')" class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-500 flex items-center">
+                                <i class="fas fa-file-alt mr-2"></i> Gerenciar Documentos
+                            </button>
+                        </li>
+                        <li>
                             <button onclick="showTab('settings')" class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-500 flex items-center">
                                 <i class="fas fa-cog mr-2"></i> Configurações
                             </button>
@@ -175,7 +244,7 @@
                 <!-- Posts Tab -->
                 <div id="posts" class="tab-content active">
                     <h2 class="text-2xl font-bold mb-6 text-gray-800">Gerenciar Postagens</h2>
-                    
+                                        
                     <!-- Add New Post Form -->
                     <div class="bg-white p-6 rounded-lg shadow-md mb-8">
                         <h3 class="text-xl font-semibold mb-4">Nova Postagem</h3>
@@ -193,7 +262,7 @@
                             </div>
                         </form>
                     </div>
-                    
+                                        
                     <!-- Existing Posts -->
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-xl font-semibold mb-4">Postagens Existentes</h3>
@@ -206,7 +275,7 @@
                 <!-- Photos Tab -->
                 <div id="photos" class="tab-content">
                     <h2 class="text-2xl font-bold mb-6 text-gray-800">Gerenciar Fotos</h2>
-                    
+                                        
                     <!-- Add New Photo Form -->
                     <div class="bg-white p-6 rounded-lg shadow-md mb-8">
                         <h3 class="text-xl font-semibold mb-4">Adicionar Nova Foto</h3>
@@ -228,7 +297,7 @@
                             </div>
                         </form>
                     </div>
-                    
+                                        
                     <!-- Existing Photos -->
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-xl font-semibold mb-4">Fotos Existentes</h3>
@@ -238,10 +307,53 @@
                     </div>
                 </div>
 
+                <!-- Documents Tab -->
+                <div id="documents" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Gerenciar Documentos</h2>
+                    
+                    <!-- Add New Document Form -->
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                        <h3 class="text-xl font-semibold mb-4">Adicionar Novo Documento</h3>
+                        <form id="documentForm" class="space-y-4">
+                            <div>
+                                <label for="documentTitle" class="block text-sm font-medium text-gray-700 mb-1">Título</label>
+                                <input type="text" id="documentTitle" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="documentDescription" class="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
+                                <textarea id="documentDescription" rows="3" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            </div>
+                            <div>
+                                <label for="documentType" class="block text-sm font-medium text-gray-700 mb-1">Tipo</label>
+                                <select id="documentType" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="pdf">PDF</option>
+                                    <option value="docx">Word (DOCX)</option>
+                                    <option value="xlsx">Excel (XLSX)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="documentFile" class="block text-sm font-medium text-gray-700 mb-1">Arquivo</label>
+                                <input type="file" id="documentFile" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Adicionar Documento</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Existing Documents -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Documentos Existentes</h3>
+                        <div id="existingDocuments" class="space-y-4">
+                            <!-- Documents will be loaded here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Settings Tab -->
                 <div id="settings" class="tab-content">
                     <h2 class="text-2xl font-bold mb-6 text-gray-800">Configurações</h2>
-                    
+                                        
                     <div class="bg-white p-6 rounded-lg shadow-md space-y-6">
                         <!-- Google Form Settings -->
                         <div>
@@ -256,7 +368,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                                                
                         <!-- Admin Password -->
                         <div>
                             <h3 class="text-xl font-semibold mb-4">Alterar Senha</h3>
@@ -299,6 +411,7 @@
         // Data storage using localStorage
         let announcements = JSON.parse(localStorage.getItem('condominio_announcements')) || [];
         let photos = JSON.parse(localStorage.getItem('condominio_photos')) || [];
+        let documents = JSON.parse(localStorage.getItem('condominio_documents')) || [];
 
         // Initialize with sample data if empty
         if (announcements.length === 0) {
@@ -319,7 +432,37 @@
             localStorage.setItem('condominio_photos', JSON.stringify(photos));
         }
 
+        if (documents.length === 0) {
+            documents = [
+                { id: 1, title: "Regulamento Interno", description: "Documento com as normas e regras do condomínio.", type: "pdf", url: "https://www.example.com/regulamento.pdf" },
+                { id: 2, title: "Ata de Reunião", description: "Última ata de reunião do condomínio.", type: "docx", url: "https://www.example.com/ata.docx" },
+                { id: 3, title: "Planilha de Gastos", description: "Planilha com os gastos mensais do condomínio.", type: "xlsx", url: "https://www.example.com/gastos.xlsx" }
+            ];
+            localStorage.setItem('condominio_documents', JSON.stringify(documents));
+        }
+
         // Page navigation functions
+        const DOCUMENTS_PASSWORD = "doc380"; // Password for documents access
+        
+        function showDocumentsPageWithAuth() {
+            if (!confirm('A área de documentos é restrita. Deseja continuar?')) return;
+            
+            const password = prompt('Digite a senha para acessar os documentos:');
+            if (password === DOCUMENTS_PASSWORD) {
+                document.getElementById('mainPage').classList.add('hidden');
+                document.getElementById('adminPage').classList.add('hidden');
+                document.getElementById('documentsPage').classList.remove('hidden');
+            } else {
+                alert('Senha incorreta. Acesso negado.');
+            }
+        }
+
+        function showDocumentsPage() {
+            document.getElementById('mainPage').classList.add('hidden');
+            document.getElementById('adminPage').classList.add('hidden');
+            document.getElementById('documentsPage').classList.remove('hidden');
+        }
+
         function showMainPage() {
             document.getElementById('mainPage').classList.remove('hidden');
             document.getElementById('adminPage').classList.add('hidden');
@@ -371,6 +514,11 @@
                     alert('Senha incorreta. Tente novamente.');
                 }
             });
+
+            // Add click handler for cancel button
+            modal.querySelector('button[type="button"]').addEventListener('click', function() {
+                document.body.removeChild(modal);
+            });
         }
 
         function logout() {
@@ -385,7 +533,7 @@
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
-            
+                        
             // Show the selected tab
             document.getElementById(tabId).classList.add('active');
         }
@@ -395,7 +543,7 @@
             // Load announcements
             const announcementsContainer = document.querySelector('#mainPage .grid');
             announcementsContainer.innerHTML = '';
-            
+                        
             announcements.forEach(announcement => {
                 const announcementCard = document.createElement('div');
                 announcementCard.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition';
@@ -414,7 +562,7 @@
             // Load photos
             const photosContainer = document.querySelector('#mainPage .grid.gap-4');
             photosContainer.innerHTML = '';
-            
+                        
             photos.forEach(photo => {
                 const photoItem = document.createElement('div');
                 photoItem.className = 'gallery-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer';
@@ -433,9 +581,10 @@
         // Load admin content
         function loadAdminContent() {
             // Load existing posts
+            loadDocuments();
             const postsContainer = document.getElementById('existingPosts');
             postsContainer.innerHTML = '';
-            
+                        
             announcements.forEach(post => {
                 const postItem = document.createElement('div');
                 postItem.className = 'bg-gray-50 p-4 rounded-lg border border-gray-200';
@@ -460,7 +609,7 @@
             // Load existing photos
             const photosContainer = document.getElementById('existingPhotos');
             photosContainer.innerHTML = '';
-            
+                        
             photos.forEach(photo => {
                 const photoItem = document.createElement('div');
                 photoItem.className = 'relative group';
@@ -482,15 +631,15 @@
         // Form handlers
         document.getElementById('postForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+                        
             const title = document.getElementById('postTitle').value;
             const content = document.getElementById('postContent').value;
-            
+                        
             if (!title || !content) {
                 alert('Por favor, preencha todos os campos.');
                 return;
             }
-            
+                        
             // Add new post (in a real app, this would be sent to a server)
             const newPost = {
                 id: announcements.length + 1,
@@ -498,11 +647,11 @@
                 content: content,
                 date: new Date().toLocaleDateString('pt-BR')
             };
-            
+                        
             announcements.unshift(newPost);
             localStorage.setItem('condominio_announcements', JSON.stringify(announcements));
             loadAdminContent();
-            
+                        
             // Reset form
             this.reset();
             alert('Postagem criada com sucesso!');
@@ -510,42 +659,42 @@
 
         document.getElementById('photoForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+                        
             const title = document.getElementById('photoTitle').value;
             const fileInput = document.getElementById('photoUpload');
-            
+                        
             if (!fileInput.files || fileInput.files.length === 0) {
                 alert('Por favor, selecione uma imagem.');
                 return;
             }
-            
+                        
             const file = fileInput.files[0];
             const reader = new FileReader();
-            
+                        
             reader.onload = function(e) {
                 const newPhoto = {
                     id: photos.length + 1,
                     title: title,
                     url: e.target.result // This is the base64 encoded image
                 };
-                
+                                
                 photos.unshift(newPhoto);
                 localStorage.setItem('condominio_photos', JSON.stringify(photos));
                 loadAdminContent();
-                
+                                
                 // Reset form
                 document.getElementById('photoForm').reset();
                 document.getElementById('previewImage').classList.add('hidden');
                 alert('Foto adicionada com sucesso!');
             };
-            
+                        
             reader.readAsDataURL(file);
             return; // Prevent further execution
-            
+                        
             photos.unshift(newPhoto);
             localStorage.setItem('condominio_photos', JSON.stringify(photos));
             loadAdminContent();
-            
+                        
             // Reset form
             this.reset();
             document.getElementById('previewImage').classList.add('hidden');
@@ -581,10 +730,10 @@
             if (post) {
                 document.getElementById('postTitle').value = post.title;
                 document.getElementById('postContent').value = post.content;
-                
+                                
                 // Scroll to form
                 document.getElementById('postTitle').scrollIntoView({ behavior: 'smooth' });
-                
+                                
                 // In a real app, you would have proper edit functionality
                 alert(`Edição do post "${post.title}". Em uma aplicação real, isso permitiria salvar as alterações.`);
             }
@@ -611,6 +760,7 @@
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             loadMainPageContent();
+            document.getElementById('documentsPage').classList.add('hidden');
         });
     </script>
 </body>
