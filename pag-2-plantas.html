@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Condomínio Carla Cristina - Plantas</title>
+<style>
+  body {
+    background-color: #007BFF; /* Azul */
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #0056b3;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #0056b3;
+    border-radius: 10px;
+  }
+  ul#fileList {
+    list-style: none;
+    padding: 0;
+  }
+  ul#fileList li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: #00408a;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  ul#fileList img.file-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-right: 20px;
+    border-radius: 8px;
+    background: white;
+  }
+  ul#fileList a {
+    color: #ffffcc;
+    font-size: 1.2em;
+    text-decoration: none;
+    word-break: break-word;
+  }
+  ul#fileList a:hover {
+    text-decoration: underline;
+  }
+  #loginPrompt {
+    display: none;
+    text-align: center;
+    margin-top: 60px;
+    font-size: 1.4em;
+  }
+</style>
+</head>
+<body>
+
+<header>Condomínio Carla Cristina <br> - plantas - </header>
+
+<main>
+  <div id="loginPrompt">
+      <p>Por favor, insira a senha para acessar os arquivos.</p>
+      <input type="password" id="passwordInput" placeholder="Senha" />
+      <button id="loginBtn">Entrar</button>
+      <p id="loginError" style="color: #ff6666; display:none;">Senha incorreta. Tente novamente.</p>
+  </div>
+  <ul id="fileList" style="display:none;"></ul>
+</main>
+
+<script>
+
+// SEMJA //
+  const senhaCorreta = "380"; // Defina sua senha aqui
+
+  const arquivos = [
+
+// MODELO  //
+ //   { nome: "foto2.png", url: "arquivos/foto2.png", tipo: "imagem"},
+
+    {nome: "IMG_20250708_140119-primeiro-and-tipo.jpg" , url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_140119-primeiro-and-tipo.jpg",tipo: "imagem"},
+
+    { url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_140136-primeiro-andar-hidr-elet-esgoto-ventila-2.jpg", nome: "IMG_20250708_140136-primeiro-andar-hidr-elet-esgoto-ventila-2.jpg", tipo: "imagem"},
+
+   { url: "file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_141804-planta-baixa-fundos.jpg", nome: "IMG_20250708_141804-planta-baixa-fundos.jpg", tipo: "imagem" },
+
+   { url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_142020-pavimento-tipo-hidr-esgoto.jpg",nome: "IMG_20250708_142020-pavimento-tipo-hidr-esgoto.jpg", tipo: "imagem" },
+
+ { url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_142314-atico-hid-elet.jpg",nome: "IMG_20250708_142314-atico-hid-elet.jpg", tipo: "imagem" },
+
+ { url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_142459-corte-elevacao-2.jpg",nome: "IMG_20250708_142459-corte-elevacao-2.jpg", tipo: "imagem" },
+
+ { url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_142604-descritivo-corte-elevacao-3-3.jpg",nome: "IMG_20250708_142604-descritivo-corte-elevacao-3-3.jpg", tipo: "imagem" },
+
+ { url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_142724-corte-elevaçao-3-3.jpg",nome: "IMG_20250708_142724-corte-elevaçao-3-3.jpg", tipo: "imagem" },
+
+ { url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_142913-terro-inst-eletrica.jpg",nome: "IMG_20250708_142913-terreo-inst-eletrica.jpg", tipo: "imagem" },
+
+ { url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_143046-nono-andar.jpg",nome: "IMG_20250708_143046-nono-andar.jpg", tipo: "imagem" },
+
+ { url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_143252-atico-casa-de-maquinas.jpg",nome: "IMG_20250708_143252-atico-casa-de-maquinas.jpg", tipo: "imagem" },
+
+ { url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_143413-decimo-pavimento.jpg",nome: "IMG_20250708_143413-decimo-pavimento.jpg", tipo: "imagem" },
+
+{ url: "file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/recorte-hidraulico-aquecedori.png", nome: "recorte-hidraulico-aquecedori.png", tipo: "imagem" },
+
+    { nome: "observacao_planta-e3-13.pdf", url: "file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/observacao_planta-e3-13.pdf", tipo: "documento" },
+
+
+// ins
+
+
+ //{ url:"file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/IMG_20250708_140119-primeiro-and-tipo.jpg",nome:_20250708_140119-primeiro-and-tipo.jpg, tipo: "imagem" },
+
+
+//INSERT 
+
+
+
+//END INSERT
+  ];
+
+  const icones = {
+// imagem: "https://cdn-icons-png.flaticon.com/512/2921/2921222.png", // ícone genérico de imagem grande 40px
+
+    imagem: "/home/bonilha/Documentos/HTML/GitHub/carla.cristina/Images/ico_planta.png", // ícone genérico de imagem grande 60px
+   
+    documento: "https://cdn-icons-png.flaticon.com/512/337/337946.png" // ícone genérico de documento grande 40px
+  };
+
+  const loginPrompt = document.getElementById('loginPrompt');
+  const fileList = document.getElementById('fileList');
+  const passwordInput = document.getElementById('passwordInput');
+  const loginBtn = document.getElementById('loginBtn');
+  const loginError = document.getElementById('loginError');
+
+  loginPrompt.style.display = 'block';
+
+  loginBtn.addEventListener('click', () => {
+    const senha = passwordInput.value;
+    if (senha === senhaCorreta) {
+      loginPrompt.style.display = 'none';
+      fileList.style.display = 'block';
+      mostrarArquivos();
+    } else {
+      loginError.style.display = 'block';
+    }
+  });
+
+  function mostrarArquivos() {
+    fileList.innerHTML = '';
+    arquivos.forEach(arquivo => {
+      let li = document.createElement('li');
+
+      let img = document.createElement('img');
+      img.className = 'file-icon';
+      img.src = arquivo.tipo === 'imagem' ? arquivo.url : icones.imagem;
+      img.alt = arquivo.nome;
+
+      let a = document.createElement('a');
+      a.href = arquivo.url;
+      a.download = arquivo.nome;
+      a.textContent = arquivo.nome;
+
+      li.appendChild(img);
+      li.appendChild(a);
+      fileList.appendChild(li);
+    });
+  }
+</script>
+<a href="arquivo.doc">doc</a>
+</body>
+</html>
+
