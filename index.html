@@ -152,7 +152,7 @@
                     <div class="p-6">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
-                            <h3 class="text-xl font-bold text-gray-800">Regulamento Interno</h3>
+                            <h3 class="text-xl font-bold text-gray-800">Regulamento Interno 3</h3>
                         </div>
                         <p class="text-gray-600 mb-4">Documento com as normas e regras do condomínio.</p>
                         <a href="https://www.example.com/regulamento.pdf" target="_blank" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Baixar PDF</a>
@@ -468,7 +468,7 @@
         function showDocumentsPageWithAuth() {
             if (!confirm('A área de documentos é restrita. Deseja continuar?')) return;
             
-            const password = prompt('Digite a senha para acessar os documentos:');
+            const password = prompt('Digite a senha fonecida para acessar os documentos:');
             if (password === DOCUMENTS_PASSWORD) {
                 document.getElementById('mainPage').classList.add('hidden');
                 document.getElementById('adminPage').classList.add('hidden');
@@ -482,6 +482,7 @@
             document.getElementById('mainPage').classList.add('hidden');
             document.getElementById('adminPage').classList.add('hidden');
             document.getElementById('documentsPage').classList.remove('hidden');
+            
         }
 
         function showMainPage() {
@@ -491,7 +492,7 @@
         }
 
         // Admin password (in a real app, this would be server-side)
-        const ADMIN_PASSWORD = "123a";
+        const ADMIN_PASSWORD = "380";
         let isAuthenticated = false;
 
         function showAdminPage() {
