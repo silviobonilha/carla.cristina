@@ -65,6 +65,34 @@
 </head>
 <body>
 <header>Site colaborativo - Condomínio Carla Cristina <br> - plantas - </header>
+
+  <!-- Botão de Retorno -->
+<button id="btnVoltar">Voltar à Página Inicial</button>
+
+<script>
+  document.getElementById("btnVoltar").addEventListener("click", function() {
+    window.location.href = "file:///home/bonilha/Documentos/HTML/GitHub/carla.cristina/index.html";
+  });
+ 
+</script>
+<style>
+  #btnVoltar {
+    background: #0b64c0;
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    float: right; /* joga o botão para a direita */
+  }
+  #btnVoltar:hover {
+    background: #094a90;
+  }
+</style>
+<!-- End Botão -->
+  
+  
 <main>
   <div id="loginPrompt">
       <p>Por favor, insira a senha para acessar os arquivos.</p>
