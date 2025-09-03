@@ -29,6 +29,42 @@
         }
     </style>
 </head>
+
+      <!-- Botão de Retorno -->
+<button id="btnVoltar">Voltar à Página Inicial</button>
+
+<script>
+  document.getElementById("btnVoltar").addEventListener("click", function() {
+    //window.history.back();
+    window.location.href = "https://silviobonilha.github.io/carla.cristina/";
+  });
+ 
+</script>
+<style>
+  #btnVoltar {
+   background: #555;
+    margin:  20px 20px;   /* espaço em cima e embaixo */
+    color: #fff;
+    padding: 10px 18px;
+    border: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    float: right; /* joga o botão para a direita */
+    border-radius: 15px; /* 🔹 arredondamento */
+  }
+  #btnVoltar:hover {
+    background: #094a90;
+  }
+</style>
+<!-- End Botão -->
+
+
+
+
+
+
+    
 <body class="bg-stone-100 flex flex-col items-center p-4 min-h-screen">
 
     <!-- Cabeçalho (amarelo) -->
