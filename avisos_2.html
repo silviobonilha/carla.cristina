@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avisos -Condomínio Carla Cristina</title>
+    <!-- Inclui o Tailwind CSS via CDN para estilização rápida -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Define a fonte Inter para toda a página -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilos para a barra de rolagem */
+        .scrollbar-custom::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+            border-radius: 10px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 10px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body class="bg-stone-100 flex flex-col items-center p-4 min-h-screen">
+
+    <!-- Cabeçalho (amarelo) -->
+    <header class="w-full max-w-4xl bg-amber-400 p-6 rounded-t-xl shadow-lg border-b-4 border-amber-600 mb-6 flex flex-col items-center">
+        <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 text-center">Condomínio Carla Cristina</h1>
+        <p class="mt-2 text-xl text-gray-700">Painel de Avisos</p>
+    </header>
+
+    <main class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6">
+        <div id="status-message" class="text-center text-red-500 mb-4"></div>
+
+        <!-- Seção de Avisos -->
+        <section>
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Avisos Recentes</h2>
+            <p class="text-sm text-gray-500 mb-4 italic">
+                <!-- Para editar os avisos, altere o código diretamente abaixo. -->
+            </p>
+            <div id="container-avisos" class="space-y-6">
+                <!-- AVISOS - EDITE AQUI -->
+                <!-- Este conteúdo é o que aparece na página. Para editar, altere o texto abaixo ou adicione um novo bloco. -->
+                <div class="bg-gray-50 p-4 rounded-xl shadow-sm border-l-4 border-amber-400">
+                    <h3 class="text-lg font-bold text-gray-800">Bem-vindos</h3>
+                    <p class="mt-2 text-gray-600">
+                        Prezados condôminos, este site tem por objetivo colaborar com informações e disponibilizaçãode documentos, plantas, e informações sobre o nosso condomínio.
+                    </p>
+                    <p class="mt-4 text-xs text-gray-400">Publicado em: 03/09/2025</p>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-xl shadow-sm border-l-4 border-amber-400">
+                    <h3 class="text-lg font-bold text-gray-800">Formulário</h3>
+                    <p class="mt-2 text-gray-600">
+                       Editamos um formulário para levantamento de dados sobre o consumo da carga elétrica, com vistas à possibilidade de instalação de ar-condicionado.
+                    </p>
+                    <p class="mt-4 text-xs text-gray-400">Publicado em: 03/09/2025</p>
+                </div>
+
+<!-- Abaixo bloco vazio para aviso -->
+                <div class="bg-gray-50 p-4 rounded-xl shadow-sm border-l-4 border-amber-400">
+                    <h3 class="text-lg font-bold text-gray-800">  </h3>
+                    <p class="mt-2 text-gray-600"> 
+                        
+                    </p>
+                    <p class="mt-4 text-xs text-gray-400">  </p>
+                </div>
+
+            </div>
+
+            <!-- FIM DOS AVISOS -->
+
+            <!-- Mensagem de avisos vazios -->
+            <div id="aviso-vazio" class="text-center text-gray-500 mt-8" style="display: none;">
+                <p> </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-6 text-center text-gray-500 text-sm">
+        <p>Desenvolvido por S. Bonilha - bmfioinfo@gmail.com .</p>
+    </footer>
+</body>
+</html>
+
