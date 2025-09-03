@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avisos - Condomínio Carla Cristina</title>
+    <!-- Inclui o Tailwind CSS via CDN para estilização rápida -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Define a fonte Inter para toda a página -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilos para a barra de rolagem */
+        .scrollbar-custom::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+            border-radius: 10px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 10px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+
+
+<body class="bg-stone-100 flex flex-col items-center p-4 min-h-screen">
+
+    <!-- Cabeçalho (amarelo) -->
+    <header class="w-full max-w-4xl bg-amber-400 p-6 rounded-t-xl shadow-lg border-b-4 border-amber-600 mb-6 flex flex-col items-center">
+        <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 text-center">Condomínio Carla Cristina</h1>
+        <p class="mt-2 text-xl text-gray-700">Painel de Avisos</p>
+    </header>
+
+ <!-- Botão de Retorno -->
+<button id="btnVoltar">Voltar à Página Inicial</button>
+
+<script>
+  document.getElementById("btnVoltar").addEventListener("click", function() {
+    //window.history.back();
+    window.location.href = "https://silviobonilha.github.io/carla.cristina/";
+  });
+ 
+</script>
+
+<style>
+  #btnVoltar {
+   background: #555;
+    margin:  20px 20px;   /* espaço em cima e embaixo */
+    color: #fff;
+    padding: 10px 18px;
+    border: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    float: right; /* joga o botão para a direita */
+    border-radius: 15px; /* 🔹 arredondamento */
+  }
+  #btnVoltar:hover {
+    background: #094a90;
+  }
+
+</style>
+
+<!-- End Botão -->
+
+
+    <main class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6">
+        <div id="status-message" class="text-center text-red-500 mb-4"></div>
+
+ 
+        <!-- Seção de Avisos -->
+        <section>
+            <center> <h2 class="text-xl font-semibold text-gray-800 mb-4">Avisos Recentes</h2></center>
+           
+            <div id="container-avisos" class="space-y-6">
+
+
+                <!-- AVISOS - EDITE AQUI -->
+                <!-- Este conteúdo é o que aparece na página. Para editar, altere o texto abaixo ou adicione um novo bloco. -->
+                <div class="bg-gray-50 p-4 rounded-xl shadow-sm border-l-4 border-amber-400">
+                    <h3 class="text-lg font-bold text-gray-800">Bem-vindos</h3>
+                    <p class="mt-2 text-gray-600">
+                         Prezados condôminos, este site tem por objetivo colaborar com informações e disponibilizaçãode documentos, plantas, e informações sobre o nosso condomínio.
+                    </p>
+                   <p class="mt-4 text-xs text-gray-400">Publicado em:  03/09/25 </p> </div>
+                
+                <div class="bg-gray-50 p-4 rounded-xl shadow-sm border-l-4 border-amber-400">
+                    <h3 class="text-lg font-bold text-gray-800">Formulário</h3>
+                    <p class="mt-2 text-gray-600">
+                       Editamos um formulário para levantamento de dados sobre o consumo da carga elétrica, com vistas à possibilidade de instalação de ar-condicionado.
+                    </p>
+                  <p class="mt-4 text-xs text-gray-400">Publicado em:  03/09/25</p>
+                </div>
+
+                <!-- NOVO AVISO COM DATA E HORA AUTOMÁTICAS -->
+                <div class="bg-gray-50 p-4 rounded-xl shadow-sm border-l-4 border-amber-400">
+                    <h3 class="text-lg font-bold text-gray-800"> </h3>
+                    <p class="mt-2 text-gray-600">       </p>
+                    <!-- AQUI ESTÁ A TAG SPAN QUE SERÁ PREENCHIDA AUTOMATICAMENTE -->
+                    <p class="mt-4 text-xs text-gray-400">Publicado em: </p>
+                </div>
+                
+            </div>
+            <!-- FIM DOS AVISOS -->
+
+        </section>
+
+    </main>
+
+
+
+    <!-- CÓDIGO JAVASCRIPT -->
+    <script>
+        // Esta função encontra todos os elementos com a classe 'data-publicacao'
+        // e insere a data e hora atuais.
+        function adicionarDataEHora() {
+            // Seleciona todos os elementos com a classe 'data-publicacao'
+            const elementosData = document.querySelectorAll('.data-publicacao');
+            
+            // Cria um novo objeto de data para pegar a data e hora atuais
+            const agora = new Date();
+            const dia = String(agora.getDate()).padStart(2, '0');
+            const mes = String(agora.getMonth() + 1).padStart(2, '0'); // Mês começa do 0
+            const ano = agora.getFullYear();
+            const horas = String(agora.getHours()).padStart(2, '0');
+            const minutos = String(agora.getMinutes()).padStart(2, '0');
+            
+            // Formata a data no padrão desejado
+            const dataFormatada = `${dia}/${mes}/${ano} às ${horas}:${minutos}`;
+
+            // Itera sobre cada elemento encontrado e atualiza o seu conteúdo de texto
+            elementosData.forEach(elemento => {
+                elemento.textContent = dataFormatada;
+            });
+        }
+        
+        // Garante que a função seja executada quando a página for totalmente carregada
+        window.onload = adicionarDataEHora;
+    </script>
+ <footer class="mt-6 text-center text-gray-500 text-sm">
+        <p>Desenvolvido por S. Bonilha - bmfioinfo@gmail.com </p>
+    <span class= "text-xs data-publicacao"></span>
+<script> window.onload = adicionarDataEHora; </script>
+    </footer>
+
+</body>
+</html>
+
