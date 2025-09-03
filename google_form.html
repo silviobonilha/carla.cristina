@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>google form</title>
+<style>
+  body {
+    background-color: 	#007BFF;  /* Azul */
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+
+  }
+  header {
+    background-color: #0056b3;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 10px;  /*  arredondamento */
+  }
+  
+  main {
+    background-color:  #0056b3;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;   
+    border-radius: 10px;
+  }
+  ul#fileList {
+    list-style: none;
+    padding: 0;
+  }
+  ul#fileList li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: #00408a;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  ul#fileList img.file-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-right: 20px;
+    border-radius: 8px;
+    background: white;
+  }
+  ul#fileList a {
+    color: #ffffcc;
+    font-size: 1.2em;
+    text-decoration: none;
+    word-break: break-word;
+  }
+  ul#fileList a:hover {
+    text-decoration: underline;
+  }
+  #loginPrompt {
+    display: none;
+    text-align: center;
+    margin-top: 0px;
+    font-size: 1.4em;
+  }
+</style>
+</head>
+<body>
+<header>Carla Cristina<br>documentos</header>
+
+<!-- Botão de Retorno -->
+<button id="btnVoltar">Voltar à Página Inicial</button>
+
+<script>
+  document.getElementById("btnVoltar").addEventListener("click", function() {
+//  window.history.back();
+  window.location.href = "https://silviobonilha.github.io/carla.cristina/";
+  });
+ 
+</script>
+<!-- End Botão de Retorno -->  
+  
+<style>
+  #btnVoltar {
+    background: #0b64c0;
+    margin:  20px 20px;   /* espaço em cima e embaixo */
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    float: right; /* joga o botão para a direita */
+    border-radius: 15px; /* 🔹 arredondamento */
+  }
+  #btnVoltar:hover {
+    background: #094a90;
+  }
+</style>
+<!-- End Botão -->
+  
+<!--main>
+  <div id="loginPrompt">
+      <p>Insira a senha para acessar os arquivos.</p>
+      <input type="password" id="passwordInput" placeholder="Senha" />
+      <button id="loginBtn">Entrar</button>
+      <p id="loginError" style="color: #ff6666; display:none;">Senha incorreta. Tente novamente.</p>
+  </div>
+  <ul id="fileList" style="display:none;"></ul>
+</main>
+
+<!-- SENHA // --> 
+
+  <!--script>
+
+  const senhaCorreta = "380"; // Defina sua senha aqui
+// END PASSWORD
+
+ // const arquivos = [
+//MODELO 
+//  { nome: "documento2.docx", url: "arquivos/documento2.docx", tipo: "documento" }
+    {url:"", nome:"", tipo:""},
+
+//  { url:"https://raw.githubusercontent.com/silviobonilha/carla.cristina/documents/Ata2024.pdf", nome:"Assembleia 2024", tipo:"documento"},
+
+//  { url:"https://raw.githubusercontent.com/silviobonilha/carla.cristina/documents/Ata2025.pdf", nome:"Assembleia 2025" , tipo:"documento"},
+
+//  { url:"https://raw.githubusercontent.com/silviobonilha/carla.cristina/documents/Convencao.pdf", nome:"Convenção.pdf", tipo:"documento"},
+
+// { url:"https://raw.githubusercontent.com/silviobonilha/carla.cristina/documents/Regimento.pdf", nome: "Regimento Interno", tipo: "documento"},
+
+ ];
+
+ //  const icones = {
+    imagem: "", // ícone genérico de imagem grande 40px  //  https://cdn-icons-png.flaticon.com/512/2921/2921222.png
+    documento: "https://cdn-icons-png.flaticon.com/512/337/337946.png"
+ // ícone genérico de documento grande 40px
+  };
+
+  const loginPrompt = document.getElementById('loginPrompt');
+  const fileList = document.getElementById('fileList');
+  const passwordInput = document.getElementById('passwordInput');
+  const loginBtn = document.getElementById('loginBtn');
+  const loginError = document.getElementById('loginError');
+
+  loginPrompt.style.display = 'block';
+
+  loginBtn.addEventListener('click', () => {
+    const senha = passwordInput.value;
+    if (senha === senhaCorreta) {
+      loginPrompt.style.display = 'none';
+      fileList.style.display = 'block';
+      mostrarArquivos();
+    } else {
+      loginError.style.display = 'block';
+    }
+  });
+
+  function mostrarArquivos() {
+    fileList.innerHTML = '';
+    arquivos.forEach(arquivo => {
+      let li = document.createElement('li');
+
+      let img = document.createElement('img');
+      img.className = 'file-icon';
+      img.src = arquivo.tipo === 'imagem' ? arquivo.url : icones.documento;
+      img.alt = arquivo.nome;
+
+      let a = document.createElement('a');
+      a.href = arquivo.url;
+      a.download = arquivo.nome;
+      a.textContent = arquivo.nome;
+
+      li.appendChild(img);
+      li.appendChild(a);
+      fileList.appendChild(li);
+    });
+  }
+
+  const loginPrompt = document.getElementById('loginPrompt');
+  const fileList = document.getElementById('fileList');
+  const passwordInput = document.getElementById('passwordInput');
+  const loginBtn = document.getElementById('loginBtn');
+  const loginError = document.getElementById('loginError');
+
+  loginPrompt.style.display = 'block';
+
+  loginBtn.addEventListener('click', () => {
+    const senha = passwordInput.value;
+    if (senha === senhaCorreta) {
+      loginPrompt.style.display = 'none';
+      fileList.style.display = 'block';
+      mostrarArquivos();
+    } else {
+      loginError.style.display = 'block';
+    }
+  });
+
+  function mostrarArquivos() {
+    fileList.innerHTML = '';
+    arquivos.forEach(arquivo => {
+      let li = document.createElement('li');
+
+      let img = document.createElement('img');
+      img.className = 'file-icon';
+      img.src = arquivo.tipo === 'imagem' ? arquivo.url : icones.documento;
+      img.alt = arquivo.nome;
+
+      let a = document.createElement('a');
+      a.href = arquivo.url;
+      a.download = arquivo.nome;
+      a.textContent = arquivo.nome;
+
+      li.appendChild(img);
+      li.appendChild(a);
+      fileList.appendChild(li);
+    });
+  }
+</script>
+
+
+<!--script>
+// Google Form Section -->
+
+        <section class="py-12 container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-800">Formulário</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfozQ7X7PN69Is0ZEUkD8KM2YYNFAD1_TStD0YwysQ7pf33Og/viewform?usp=dialog" 
+                         width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+            </div>
+        </section >
+
+
+<!--/script>
+<!-- End Google Form Section -->
+
+</body>
+</html>
